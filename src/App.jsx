@@ -11,6 +11,7 @@ import AffiliateCommission from "./pages/AffiliateCommission";
 import AddSpecialCommission from "./pages/AddSpecialcommission";
 import AffiliateCoupons from "./pages/AffiliateCoupons";
 import AffiliatePayments from "./pages/AffiliatePayments";
+import FaqCustomization from "./pages/FaqCustomization";
 // import Doctors from "./pages/Doctors";
 // import Patients from "./pages/Patients";
 // Add all other pages...
@@ -31,6 +32,8 @@ const App = () => {
           <Route path="/affiliate/commission/special-commission" element={<AddSpecialCommission />} />
           <Route path="/affiliate/coupons" element={<AffiliateCoupons />} />
           <Route path="/affiliate/payments" element={<AffiliatePayments />} />
+
+          <Route path="/customization/faq" element={<FaqCustomization />} />
 
           {/* <Route path="/doctors" element={<Doctors />} /> */}
           {/* <Route path="/patients" element={<Patients />} /> */}

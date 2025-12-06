@@ -4,6 +4,13 @@ import { BsArrowBarDown, BsArrowDown } from "react-icons/bs";
 import { FaAngleDown } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 
+type Item = {
+  id: string;
+  label: string;
+  icon: string;
+  path: string;
+}
+
 const MENU = [
   {
     section: "Main",
@@ -15,7 +22,6 @@ const MENU = [
       { id: "speciality", label: "Speciality", icon: "/speciality.png", path: "/" },
       { id: "coupons", label: "Coupons", icon: "/coupon.png", path: "/" },
       { id: "concerns", label: "Concerns", icon: "/concerns.png", path: "/" },
-      { id: "referral", label: "Referral", icon: "/referral.png", path: "/" },
       {
         id: "affiliate",
         label: "Affiliate",
@@ -26,10 +32,20 @@ const MENU = [
           { name: "Coupons", path: "/affiliate/coupons" },
           { name: "Payment", path: "/affiliate/payments" },
           { name: "Pending Payment", path: "/affiliate/payments" },
-          { name: "Sales", path: "/affiliate/sales" },
-          { name: "Doctors", path: "/affiliate/doctors" },
+          { name: "Sales", path: "/affiliate/commission" },
+          { name: "Doctors", path: "/affiliate/coupons" },
         ],
       },
+      {
+        id: "customization",
+        label: "Customization",
+        icon: "/affiliate.png",
+        children: [
+          {name: "Web", path: "/customization/faq"},
+          {name: "App", path: "/customization/faq"},
+        ]
+      },
+      { id: "referral", label: "Referral", icon: "/referral.png", path: "/" },
       // { id: "payments", label: "Payments", icon: "/referral.png", path: "/affiliate/payments" },
 
     ],
@@ -63,7 +79,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="h-full w-64 bg-white rounded-tr-4xl shadow-[0_0_40px_rgba(15,23,42,0.08)] p-2 overflow-y-auto">
+    <aside className="h-full w-68 bg-white rounded-tr-4xl shadow-[0_0_40px_rgba(15,23,42,0.08)] p-2 overflow-y-auto">
       {MENU.map((section) => (
         <div key={section.section} className="mb-8">
           {/* Section Title */}
