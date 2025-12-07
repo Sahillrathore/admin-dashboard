@@ -1,48 +1,74 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-
-import Header from "./components/Header";
-import Layout from "./components/Layout";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  Outlet,
+} from "react-router-dom";
 
 // Pages
-import Commission from "./pages/Commission";
+import Header from "./components/Header";
+import Layout from "./components/Layout";
 import AffiliateDashboard from "./pages/AffiliateDashboard";
 import AffiliateCommission from "./pages/AffiliateCommission";
 import AddSpecialCommission from "./pages/AddSpecialcommission";
 import AffiliateCoupons from "./pages/AffiliateCoupons";
 import AffiliatePayments from "./pages/AffiliatePayments";
 import FaqCustomization from "./pages/FaqCustomization";
-// import Doctors from "./pages/Doctors";
-// import Patients from "./pages/Patients";
-// Add all other pages...
+import AddSpecialCoupon from "./pages/AddSpecialCoupon";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
     <Router>
-      <Header />
+      <Routes>
+        {/* All routes that use Header + Layout */}
+        <Route element={<AppLayout />}>
+          {/* Default redirect */}
+          <Route
+            path="/"
+            element={<Navigate to="/affiliate/dashboard" replace />}
+          />
 
-      <Layout>
-        <Routes>
-          {/* DEFAULT ROUTE → /dashboard */}
-          <Route path="/" element={<Navigate to="/affiliate/dashboard" replace />} />
-
-          {/* MAIN ROUTES */}
           <Route path="/affiliate/dashboard" element={<AffiliateDashboard />} />
-          <Route path="/affiliate/commission" element={<AffiliateCommission />} />
-          <Route path="/affiliate/commission/special-commission" element={<AddSpecialCommission />} />
+          <Route
+            path="/affiliate/commission"
+            element={<AffiliateCommission />}
+          />
+          <Route
+            path="/affiliate/commission/special-commission"
+            element={<AddSpecialCommission />}
+          />
+          <Route
+            path="/affiliate/commission/special-coupon"
+            element={<AddSpecialCoupon />}
+          />
           <Route path="/affiliate/coupons" element={<AffiliateCoupons />} />
           <Route path="/affiliate/payments" element={<AffiliatePayments />} />
-
           <Route path="/customization/faq" element={<FaqCustomization />} />
+        </Route>
 
-          {/* <Route path="/doctors" element={<Doctors />} /> */}
-          {/* <Route path="/patients" element={<Patients />} /> */}
-
-          {/* Add more routes here */}
-        </Routes>
-      </Layout>
+        {/* 404 – this route does NOT use Layout or Header */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </Router>
   );
 };
 
 export default App;
+
+
+// AppLayout.jsx (or inside App.jsx)
+
+const AppLayout = () => {
+  return (
+    <>
+      <Header />
+      <Layout>
+        <Outlet />
+      </Layout>
+    </>
+  );
+};
+

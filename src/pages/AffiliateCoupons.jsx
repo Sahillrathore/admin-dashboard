@@ -174,7 +174,7 @@ const AffiliateCoupons = () => {
 
             {/* Header button */}
             <div className="flex justify-end">
-                <Link to='/affiliate/commission/special-commission' className="px-4 py-2 rounded-xl bg-[#28643B] text-white text-sm font-medium shadow-sm hover:bg-emerald-700 transition">
+                <Link to='/affiliate/commission/special-coupon' className="px-4 py-2 rounded-xl bg-[#28643B] text-white text-sm font-medium shadow-sm hover:bg-emerald-700 transition">
                     Add Special Coupon
                 </Link>
             </div>
