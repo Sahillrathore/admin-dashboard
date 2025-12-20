@@ -2,13 +2,7 @@ import React from "react";
 import { FaAngleRight } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-/**
- * items = [
- *   { label: "Affiliate", path: "/affiliate/dashboard" },
- *   { label: "Commission", path: "/affiliate/commission" },
- *   { label: "Special Commission", path: null }, // last item (no path)
- * ]
- */
+
 const BreadCrumb = ({ items = [] }) => {
   return (
     <div className="flex items-center gap-2 text-sm text-zinc-500">
